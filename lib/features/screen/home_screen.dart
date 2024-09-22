@@ -12,15 +12,18 @@ class HomePage extends StatelessWidget {
       appBar: AppBar(title: Text('Workouts')),
       body: Column(
         children: [
-          // Display predefined workout options
           Expanded(
             child: ListView.builder(
               itemCount: workoutController.predefinedWorkouts.length,
               itemBuilder: (context, index) {
-                String workoutName = workoutController.predefinedWorkouts[index];
+                String workoutName =
+                    workoutController.predefinedWorkouts[index];
 
-                bool isCompleted = workoutController.isWorkoutCompleted(workoutName);
-                int rating = isCompleted ? workoutController.getWorkoutRating(workoutName) : 0;
+                bool isCompleted =
+                    workoutController.isWorkoutCompleted(workoutName);
+                int rating = isCompleted
+                    ? workoutController.getWorkoutRating(workoutName)
+                    : 0;
 
                 return ListTile(
                   title: Text(workoutName),
@@ -29,14 +32,14 @@ class HomePage extends StatelessWidget {
                       : Text('Not completed'),
                   trailing: ElevatedButton(
                     onPressed: isCompleted
-                        ? null // Disable button if already completed
+                        ? null
                         : () {
-                      // Open a dialog to rate the workout and mark it as completed
-                      showDialog(
-                        context: context,
-                        builder: (context) => RatingDialog(workoutName: workoutName),
-                      );
-                    },
+                            showDialog(
+                              context: context,
+                              builder: (context) =>
+                                  RatingDialog(workoutName: workoutName),
+                            );
+                          },
                     child: Text(isCompleted ? 'Completed' : 'Start'),
                   ),
                 );
@@ -49,7 +52,6 @@ class HomePage extends StatelessWidget {
   }
 }
 
-// Rating Dialog for the user to rate the workout
 class RatingDialog extends StatefulWidget {
   final String workoutName;
 
@@ -73,7 +75,8 @@ class _RatingDialogState extends State<RatingDialog> {
           TextField(
             controller: _ratingController,
             keyboardType: TextInputType.number,
-            decoration: InputDecoration(hintText: 'Enter value between 0 and 100'),
+            decoration:
+                InputDecoration(hintText: 'Enter value between 0 and 100'),
           ),
         ],
       ),

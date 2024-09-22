@@ -1,37 +1,6 @@
-// import 'package:flutter/material.dart';
-// import 'package:workout/features/screen/home_screen.dart';
-//
-// void main() {
-//   runApp(const MyApp());
-// }
-//
-// class MyApp extends StatelessWidget {
-//   const MyApp({super.key});
-//
-//   // This widget is the root of your application.
-//   @override
-//   Widget build(BuildContext context) {
-//     return MaterialApp(
-//       title: 'Flutter Demo',
-//       theme: ThemeData(
-//
-//         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-//         useMaterial3: true,
-//       ),
-//       home:  HomePage(),
-//     );
-//   }
-// }
-//
-//
-
-
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'features/screen/home_screen.dart';
-import 'features/screen/workoutListScreen.dart';
-
 
 void main() {
   runApp(MyApp());
@@ -41,14 +10,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Workout App',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
       home: HomePage(),
-      routes: {
-        '/workoutList': (context) => WorkoutListPage(),
-      },
     );
   }
 }
